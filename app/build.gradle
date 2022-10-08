@@ -73,7 +73,7 @@ dependencies {
     implementation "androidx.datastore:datastore-preferences:1.0.0"
 
     // Recyclerview
-    //implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
 
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
@@ -101,10 +101,6 @@ dependencies {
 
     // Gson
     implementation 'com.google.code.gson:gson:2.9.0'
-
-    // Shimmer
-    implementation 'com.facebook.shimmer:shimmer:0.5.0'
-    //implementation 'com.todkars:shimmer-recyclerview:0.4.0'
 
     // Jsoup
     implementation 'org.jsoup:jsoup:1.13.1'
