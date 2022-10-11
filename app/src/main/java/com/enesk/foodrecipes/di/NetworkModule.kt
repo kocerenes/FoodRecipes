@@ -1,7 +1,7 @@
 package com.enesk.foodrecipes.di
 
 import com.enesk.foodrecipes.BuildConfig
-import com.enesk.foodrecipes.data.remote.FoodRecipesApi
+import com.enesk.foodrecipes.data.source.network.FoodRecipesApi
 import com.enesk.foodrecipes.util.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -40,6 +40,7 @@ object NetworkModule {
             .build()
     }
 
+    //TODO: change the gsonConverter to moshi
     @Singleton
     @Provides
     fun provideConverterFactory(): GsonConverterFactory {

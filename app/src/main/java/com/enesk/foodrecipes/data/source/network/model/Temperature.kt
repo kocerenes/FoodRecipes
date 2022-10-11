@@ -1,4 +1,4 @@
-package com.enesk.foodrecipes.data.remote.model
+package com.enesk.foodrecipes.data.source.network.model
 
 
 import com.google.gson.annotations.SerializedName

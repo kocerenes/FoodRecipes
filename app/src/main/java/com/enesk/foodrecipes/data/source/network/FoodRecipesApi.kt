@@ -1,6 +1,6 @@
-package com.enesk.foodrecipes.data.remote
+package com.enesk.foodrecipes.data.source.network
 
-import com.enesk.foodrecipes.data.remote.model.FoodRecipe
+import com.enesk.foodrecipes.data.source.network.model.FoodRecipe
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.QueryMap
