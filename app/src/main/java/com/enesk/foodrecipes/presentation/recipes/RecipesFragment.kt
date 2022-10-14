@@ -26,7 +26,7 @@ class RecipesFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val recipesAdapter by lazy { RecipesAdapter() }
-    private val recipesViewModel: RecipesViewModel by viewModels()
+    private val recipesViewModel by viewModels<RecipesViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,6 +49,8 @@ class RecipesFragment : Fragment() {
                     response.data?.let {
                         recipesAdapter.setData(newData = it)
                     }
+                    binding.recipesRecyclerView.visibility = View.VISIBLE
+                    binding.floatingActionButton.visibility = View.VISIBLE
                 }
                 is NetworkResult.Error -> {
                     binding.progressBarRecipe.visibility = View.GONE
@@ -59,6 +61,8 @@ class RecipesFragment : Fragment() {
                     ).show()
                 }
                 is NetworkResult.Loading -> {
+                    binding.recipesRecyclerView.visibility = View.GONE
+                    binding.floatingActionButton.visibility = View.GONE
                     binding.progressBarRecipe.visibility = View.VISIBLE
                 }
             }
