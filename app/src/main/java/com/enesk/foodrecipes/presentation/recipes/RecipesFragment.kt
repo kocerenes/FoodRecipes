@@ -10,6 +10,12 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.enesk.foodrecipes.databinding.FragmentRecipesBinding
 import com.enesk.foodrecipes.util.Constants.API_KEY
+import com.enesk.foodrecipes.util.Constants.QUERY_ADD_RECIPE_INFORMATION
+import com.enesk.foodrecipes.util.Constants.QUERY_API_KEY
+import com.enesk.foodrecipes.util.Constants.QUERY_DIET
+import com.enesk.foodrecipes.util.Constants.QUERY_FILL_INGREDIENTS
+import com.enesk.foodrecipes.util.Constants.QUERY_NUMBER
+import com.enesk.foodrecipes.util.Constants.QUERY_TYPE
 import com.enesk.foodrecipes.util.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -39,11 +45,13 @@ class RecipesFragment : Fragment() {
         recipesViewModel.recipesResponse.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is NetworkResult.Success -> {
+                    binding.progressBarRecipe.visibility = View.GONE
                     response.data?.let {
                         recipesAdapter.setData(newData = it)
                     }
                 }
                 is NetworkResult.Error -> {
+                    binding.progressBarRecipe.visibility = View.GONE
                     Toast.makeText(
                         requireContext(),
                         response.message.toString(),
@@ -51,7 +59,7 @@ class RecipesFragment : Fragment() {
                     ).show()
                 }
                 is NetworkResult.Loading -> {
-                    //TODO: progressbar
+                    binding.progressBarRecipe.visibility = View.VISIBLE
                 }
             }
         }
@@ -60,12 +68,12 @@ class RecipesFragment : Fragment() {
     private fun applyQueries(): HashMap<String, String> {
         val queries: HashMap<String, String> = HashMap()
 
-        queries["number"] = "50"
-        queries["apiKey"] = API_KEY
-        queries["type"] = "snack"
-        queries["diet"] = "vegan"
-        queries["addRecipeInformation"] = "true"
-        queries["fillIngredients"] = "true"
+        queries[QUERY_NUMBER] = "50"
+        queries[QUERY_API_KEY] = API_KEY
+        queries[QUERY_TYPE] = "snack"
+        queries[QUERY_DIET] = "vegan"
+        queries[QUERY_ADD_RECIPE_INFORMATION] = "true"
+        queries[QUERY_FILL_INGREDIENTS] = "true"
 
         return queries
     }

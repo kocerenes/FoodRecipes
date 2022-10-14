@@ -5,4 +5,8 @@
     <string name="recipes_fragment">Recipes</string>
     <string name="favorite_recipes_fragment">Favorites</string>
     <string name="food_joke">Joke</string>
+
+    <!-- Recipes Fragment -->
+    <string name="error_textview_text">No Internet Connection.</string>
+    <string name="fab_button_description">Fab Button</string>
 </resources>

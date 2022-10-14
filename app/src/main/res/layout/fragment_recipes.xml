@@ -22,7 +22,7 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
-        android:contentDescription="fab_button"
+        android:contentDescription="@string/fab_button_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
@@ -53,12 +53,24 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:alpha="0.5"
-        android:text="No Internet Connection."
-        android:textSize="18dp"
+        android:text="@string/error_textview_text"
+        android:textSize="18sp"
         android:textStyle="bold"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/error_imageView"
         app:layout_constraintStart_toStartOf="@+id/error_imageView"
         app:layout_constraintTop_toBottomOf="@+id/error_imageView" />
+
+    <ProgressBar
+        android:id="@+id/progressBarRecipe"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:visibility="gone"
+        android:indeterminateTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/recipes_recycler_view"
+        app:layout_constraintEnd_toEndOf="@+id/recipes_recycler_view"
+        app:layout_constraintStart_toStartOf="@+id/recipes_recycler_view"
+        app:layout_constraintTop_toTopOf="@+id/recipes_recycler_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
