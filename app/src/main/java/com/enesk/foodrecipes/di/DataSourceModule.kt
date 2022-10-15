@@ -1,5 +1,7 @@
 package com.enesk.foodrecipes.di
 
+import com.enesk.foodrecipes.data.source.local.LocalDataSource
+import com.enesk.foodrecipes.data.source.local.LocalDataSourceImpl
 import com.enesk.foodrecipes.data.source.remote.RemoteDataSource
 import com.enesk.foodrecipes.data.source.remote.RemoteDataSourceImpl
 import dagger.Binds
@@ -17,4 +19,10 @@ abstract class DataSourceModule {
     abstract fun provideRemoteDataSource(
         remoteDataSourceImpl: RemoteDataSourceImpl
     ): RemoteDataSource
+
+    @Binds
+    @Singleton
+    abstract fun provideLocalDataSource(
+        localDataSourceImpl: LocalDataSourceImpl
+    ): LocalDataSource
 }
