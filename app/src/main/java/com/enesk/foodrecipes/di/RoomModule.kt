@@ -2,7 +2,7 @@ package com.enesk.foodrecipes.di
 
 import android.content.Context
 import androidx.room.Room
-import com.enesk.foodrecipes.data.source.local.RecipesDatabase
+import com.enesk.foodrecipes.data.source.database.RecipesDatabase
 import com.enesk.foodrecipes.util.Constants.DATABASE_NAME
 import dagger.Module
 import dagger.Provides

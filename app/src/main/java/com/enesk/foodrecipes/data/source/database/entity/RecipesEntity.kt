@@ -1,4 +1,4 @@
-package com.enesk.foodrecipes.data.source.local.entity
+package com.enesk.foodrecipes.data.source.database.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
