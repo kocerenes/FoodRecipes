@@ -1,12 +1,14 @@
 package com.enesk.foodrecipes.presentation.recipes
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.enesk.foodrecipes.databinding.FragmentRecipesBinding
 import com.enesk.foodrecipes.util.Constants.API_KEY
@@ -18,6 +20,7 @@ import com.enesk.foodrecipes.util.Constants.QUERY_NUMBER
 import com.enesk.foodrecipes.util.Constants.QUERY_TYPE
 import com.enesk.foodrecipes.util.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class RecipesFragment : Fragment() {
@@ -35,12 +38,33 @@ class RecipesFragment : Fragment() {
         _binding = FragmentRecipesBinding.inflate(inflater, container, false)
 
         setupRecyclerView()
-        requestApiData()
+        readDatabase()
 
         return binding.root
     }
 
+    private fun setupRecyclerView() {
+        with(binding) {
+            recipesRecyclerView.adapter = recipesAdapter
+            recipesRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        }
+    }
+
+    private fun readDatabase() {
+        lifecycleScope.launch {
+            recipesViewModel.readRecipes.observe(viewLifecycleOwner) { database ->
+                if (database.isNotEmpty()) {
+                    Log.d("RecipesFragment", "readDatabase called")
+                    recipesAdapter.setData(database[0].foodRecipe)
+                } else {
+                    requestApiData()
+                }
+            }
+        }
+    }
+
     private fun requestApiData() {
+        Log.d("RecipesFragment", "requestApiData called")
         recipesViewModel.getRecipes(applyQueries())
         recipesViewModel.recipesResponse.observe(viewLifecycleOwner) { response ->
             when (response) {
@@ -54,6 +78,7 @@ class RecipesFragment : Fragment() {
                 }
                 is NetworkResult.Error -> {
                     binding.progressBarRecipe.visibility = View.GONE
+                    loadDataFromCache()
                     Toast.makeText(
                         requireContext(),
                         response.message.toString(),
@@ -64,6 +89,16 @@ class RecipesFragment : Fragment() {
                     binding.recipesRecyclerView.visibility = View.GONE
                     binding.floatingActionButton.visibility = View.GONE
                     binding.progressBarRecipe.visibility = View.VISIBLE
+                }
+            }
+        }
+    }
+
+    private fun loadDataFromCache() {
+        lifecycleScope.launch {
+            recipesViewModel.readRecipes.observe(viewLifecycleOwner) { database ->
+                if (database.isNotEmpty()) {
+                    recipesAdapter.setData(database[0].foodRecipe)
                 }
             }
         }
@@ -80,13 +115,6 @@ class RecipesFragment : Fragment() {
         queries[QUERY_FILL_INGREDIENTS] = "true"
 
         return queries
-    }
-
-    private fun setupRecyclerView() {
-        with(binding) {
-            recipesRecyclerView.adapter = recipesAdapter
-            recipesRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        }
     }
 
     override fun onDestroyView() {
