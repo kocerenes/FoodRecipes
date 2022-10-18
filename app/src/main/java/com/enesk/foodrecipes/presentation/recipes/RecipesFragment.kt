@@ -38,6 +38,10 @@ class RecipesFragment : Fragment() {
     ): View? {
         _binding = FragmentRecipesBinding.inflate(inflater, container, false)
 
+        // for recipesBinding
+        binding.lifecycleOwner = this
+        binding.recipesViewModel = recipesViewModel
+
         setupRecyclerView()
         readDatabase()
 
