@@ -9,7 +9,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.enesk.foodrecipes.R
 import com.enesk.foodrecipes.databinding.FragmentRecipesBinding
 import com.enesk.foodrecipes.util.Constants.API_KEY
 import com.enesk.foodrecipes.util.Constants.QUERY_ADD_RECIPE_INFORMATION
@@ -45,6 +47,8 @@ class RecipesFragment : Fragment() {
         setupRecyclerView()
         readDatabase()
 
+        clickTheFabRecipes()
+
         return binding.root
     }
 
@@ -79,7 +83,7 @@ class RecipesFragment : Fragment() {
                         recipesAdapter.setData(newData = it)
                     }
                     binding.recipesRecyclerView.visibility = View.VISIBLE
-                    binding.floatingActionButton.visibility = View.VISIBLE
+                    binding.fabRecipes.visibility = View.VISIBLE
                 }
                 is NetworkResult.Error -> {
                     binding.progressBarRecipe.visibility = View.GONE
@@ -92,7 +96,7 @@ class RecipesFragment : Fragment() {
                 }
                 is NetworkResult.Loading -> {
                     binding.recipesRecyclerView.visibility = View.GONE
-                    binding.floatingActionButton.visibility = View.GONE
+                    binding.fabRecipes.visibility = View.GONE
                     binding.progressBarRecipe.visibility = View.VISIBLE
                 }
             }
@@ -120,6 +124,12 @@ class RecipesFragment : Fragment() {
         queries[QUERY_FILL_INGREDIENTS] = "true"
 
         return queries
+    }
+
+    private fun clickTheFabRecipes() {
+        binding.fabRecipes.setOnClickListener {
+            findNavController().navigate(R.id.action_recipesFragment_to_recipesBottomSheet)
+        }
     }
 
     override fun onDestroyView() {
