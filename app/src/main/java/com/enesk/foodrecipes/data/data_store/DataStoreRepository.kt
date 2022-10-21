@@ -8,6 +8,7 @@ import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import com.enesk.foodrecipes.data.data_store.model.MealAndDietType
 import com.enesk.foodrecipes.util.Constants.DEFAULT_DIET_TYPE
 import com.enesk.foodrecipes.util.Constants.DEFAULT_MEAL_TYPE
 import com.enesk.foodrecipes.util.Constants.PREFERENCES_DIET_TYPE
@@ -74,10 +75,3 @@ class DataStoreRepository @Inject constructor(
             )
         }
 }
-
-data class MealAndDietType(
-    val selectedMealType: String,
-    val selectedMealTypeId: Int,
-    val selectedDietType: String,
-    val selectedDietTypeId: Int
-)
