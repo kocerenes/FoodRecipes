@@ -8,9 +8,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import com.enesk.foodrecipes.data.data_store.DataStoreRepository
 import com.enesk.foodrecipes.data.source.database.entity.RecipesEntity
 import com.enesk.foodrecipes.data.source.network.model.FoodRecipe
 import com.enesk.foodrecipes.domain.repository.RecipesRepository
+import com.enesk.foodrecipes.util.Constants
+import com.enesk.foodrecipes.util.Constants.DEFAULT_DIET_TYPE
+import com.enesk.foodrecipes.util.Constants.DEFAULT_MEAL_TYPE
 import com.enesk.foodrecipes.util.NetworkResult
 import dagger.hilt.android.internal.Contexts.getApplication
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -22,8 +26,20 @@ import javax.inject.Inject
 @HiltViewModel
 class RecipesViewModel @Inject constructor(
     private val repository: RecipesRepository,
-    private val context: Context
+    private val context: Context,
+    private val dataStoreRepository: DataStoreRepository
 ) : ViewModel() {
+
+    /** DATA_STORE */
+    private var mealType = DEFAULT_MEAL_TYPE
+    private var dietType = DEFAULT_DIET_TYPE
+
+    val readMealAndDietType = dataStoreRepository.readMealAndDietType
+
+    fun saveMealAndDietType(mealType: String, mealTypeId: Int, dietType: String, dietTypeId: Int) =
+        viewModelScope.launch(Dispatchers.IO) {
+            dataStoreRepository.saveMealAndDietType(mealType, mealTypeId, dietType, dietTypeId)
+        }
 
     /** ROOM */
     val readRecipes: LiveData<List<RecipesEntity>> = repository.readDatabase().asLiveData()
@@ -102,4 +118,24 @@ class RecipesViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             repository.insertRecipes(recipesEntity = recipesEntity)
         }
+
+    fun applyQueries(): HashMap<String, String> {
+        val queries: HashMap<String, String> = HashMap()
+
+        viewModelScope.launch {
+            readMealAndDietType.collect { type ->
+                mealType = type.selectedMealType
+                dietType = type.selectedDietType
+            }
+        }
+
+        queries[Constants.QUERY_NUMBER] = Constants.DEFAULT_RECIPES_NUMBER
+        queries[Constants.QUERY_API_KEY] = Constants.API_KEY
+        queries[Constants.QUERY_TYPE] = mealType
+        queries[Constants.QUERY_DIET] = dietType
+        queries[Constants.QUERY_ADD_RECIPE_INFORMATION] = "true"
+        queries[Constants.QUERY_FILL_INGREDIENTS] = "true"
+
+        return queries
+    }
 }
