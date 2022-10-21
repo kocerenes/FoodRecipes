@@ -10,19 +10,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.enesk.foodrecipes.R
 import com.enesk.foodrecipes.databinding.FragmentRecipesBinding
-import com.enesk.foodrecipes.util.Constants.API_KEY
-import com.enesk.foodrecipes.util.Constants.DEFAULT_DIET_TYPE
-import com.enesk.foodrecipes.util.Constants.DEFAULT_MEAL_TYPE
-import com.enesk.foodrecipes.util.Constants.DEFAULT_RECIPES_NUMBER
-import com.enesk.foodrecipes.util.Constants.QUERY_ADD_RECIPE_INFORMATION
-import com.enesk.foodrecipes.util.Constants.QUERY_API_KEY
-import com.enesk.foodrecipes.util.Constants.QUERY_DIET
-import com.enesk.foodrecipes.util.Constants.QUERY_FILL_INGREDIENTS
-import com.enesk.foodrecipes.util.Constants.QUERY_NUMBER
-import com.enesk.foodrecipes.util.Constants.QUERY_TYPE
 import com.enesk.foodrecipes.util.NetworkResult
 import com.enesk.foodrecipes.util.observeOnce
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,6 +24,8 @@ class RecipesFragment : Fragment() {
 
     private var _binding: FragmentRecipesBinding? = null
     private val binding get() = _binding!!
+
+    private val args by navArgs<RecipesFragmentArgs>()
 
     private val recipesAdapter by lazy { RecipesAdapter() }
     private val recipesViewModel by viewModels<RecipesViewModel>()
@@ -65,9 +58,9 @@ class RecipesFragment : Fragment() {
     private fun readDatabase() {
         lifecycleScope.launch {
             recipesViewModel.readRecipes.observeOnce(viewLifecycleOwner) { database ->
-                if (database.isNotEmpty()) {
+                if (database.isNotEmpty() && !args.backFromBottomSheet) {
                     Log.d("RecipesFragment", "readDatabase called")
-                    recipesAdapter.setData(database[0].foodRecipe)
+                    recipesAdapter.setData(database.first().foodRecipe)
                 } else {
                     requestApiData()
                 }
@@ -115,7 +108,6 @@ class RecipesFragment : Fragment() {
             }
         }
     }
-
 
 
     private fun clickTheFabRecipes() {
