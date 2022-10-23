@@ -36,4 +36,7 @@
     <string name="diet_type">Diet Type</string>
     <string name="meal_type">Meal Type</string>
     <string name="apply">Apply</string>
+
+    <!-- Search bar Strings -->
+    <string name="search_title">Search</string>
 </resources>
