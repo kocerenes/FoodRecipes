@@ -14,6 +14,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.enesk.foodrecipes.R
 import com.enesk.foodrecipes.databinding.FragmentRecipesBinding
+import com.enesk.foodrecipes.util.NetworkListener
 import com.enesk.foodrecipes.util.NetworkResult
 import com.enesk.foodrecipes.util.observeOnce
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,6 +31,8 @@ class RecipesFragment : Fragment() {
     private val recipesAdapter by lazy { RecipesAdapter() }
     private val recipesViewModel by viewModels<RecipesViewModel>()
 
+    private lateinit var networkListener: NetworkListener
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,11 +44,28 @@ class RecipesFragment : Fragment() {
         binding.recipesViewModel = recipesViewModel
 
         setupRecyclerView()
-        readDatabase()
+        observeBackOnline()
+
+        lifecycleScope.launch {
+            networkListener = NetworkListener()
+            networkListener.checkNetworkAvailability(requireContext())
+                .collect { status ->
+                    Log.d("NetworkListener", status.toString())
+                    recipesViewModel.networkStatus = status
+                    recipesViewModel.showNetworkStatus()
+                    readDatabase()
+                }
+        }
 
         clickTheFabRecipes()
 
         return binding.root
+    }
+
+    private fun observeBackOnline() {
+        recipesViewModel.readBackOnline.observe(viewLifecycleOwner) {
+            recipesViewModel.backOnline = it
+        }
     }
 
     private fun setupRecyclerView() {
@@ -112,7 +132,11 @@ class RecipesFragment : Fragment() {
 
     private fun clickTheFabRecipes() {
         binding.fabRecipes.setOnClickListener {
-            findNavController().navigate(R.id.action_recipesFragment_to_recipesBottomSheet)
+            if (recipesViewModel.networkStatus) {
+                findNavController().navigate(R.id.action_recipesFragment_to_recipesBottomSheet)
+            } else {
+                recipesViewModel.showNetworkStatus()
+            }
         }
     }
 
