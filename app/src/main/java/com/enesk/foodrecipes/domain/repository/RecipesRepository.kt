@@ -10,4 +10,5 @@ interface RecipesRepository {
     suspend fun getRecipes(queries: Map<String, String>): Response<FoodRecipe>
     fun readDatabase(): Flow<List<RecipesEntity>>
     suspend fun insertRecipes(recipesEntity: RecipesEntity)
+    suspend fun searchRecipe(searchQuery: Map<String, String>): Response<FoodRecipe>
 }

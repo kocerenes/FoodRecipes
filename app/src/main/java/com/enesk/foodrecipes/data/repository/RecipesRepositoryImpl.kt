@@ -22,4 +22,7 @@ class RecipesRepositoryImpl @Inject constructor(
 
     override suspend fun insertRecipes(recipesEntity: RecipesEntity) =
         localDataSource.insertRecipes(recipesEntity)
+
+    override suspend fun searchRecipe(searchQuery: Map<String, String>): Response<FoodRecipe> =
+        remoteDataSource.searchRecipe(searchQuery = searchQuery)
 }
