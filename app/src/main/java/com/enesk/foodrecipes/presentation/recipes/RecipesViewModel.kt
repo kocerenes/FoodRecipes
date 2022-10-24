@@ -14,8 +14,15 @@ import com.enesk.foodrecipes.data.source.database.entity.RecipesEntity
 import com.enesk.foodrecipes.data.source.network.model.FoodRecipe
 import com.enesk.foodrecipes.domain.repository.RecipesRepository
 import com.enesk.foodrecipes.util.Constants
+import com.enesk.foodrecipes.util.Constants.API_KEY
 import com.enesk.foodrecipes.util.Constants.DEFAULT_DIET_TYPE
 import com.enesk.foodrecipes.util.Constants.DEFAULT_MEAL_TYPE
+import com.enesk.foodrecipes.util.Constants.DEFAULT_RECIPES_NUMBER
+import com.enesk.foodrecipes.util.Constants.QUERY_ADD_RECIPE_INFORMATION
+import com.enesk.foodrecipes.util.Constants.QUERY_API_KEY
+import com.enesk.foodrecipes.util.Constants.QUERY_FILL_INGREDIENTS
+import com.enesk.foodrecipes.util.Constants.QUERY_NUMBER
+import com.enesk.foodrecipes.util.Constants.QUERY_SEARCH
 import com.enesk.foodrecipes.util.NetworkResult
 import dagger.hilt.android.internal.Contexts.getApplication
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -58,9 +65,16 @@ class RecipesViewModel @Inject constructor(
     private val _recipesResponse: MutableLiveData<NetworkResult<FoodRecipe>> = MutableLiveData()
     val recipesResponse: LiveData<NetworkResult<FoodRecipe>> = _recipesResponse
 
+    private val _searchRecipeResponse: MutableLiveData<NetworkResult<FoodRecipe>> = MutableLiveData()
+    val searchRecipeResponse: LiveData<NetworkResult<FoodRecipe>> = _searchRecipeResponse
+
     /** RETROFIT */
     fun getRecipes(queries: Map<String, String>) = viewModelScope.launch {
         getRecipesSafeCall(queries)
+    }
+
+    fun searchRecipe(searchQuery: Map<String, String>) = viewModelScope.launch {
+        searchRecipeSafeCall(searchQuery = searchQuery)
     }
 
     private suspend fun getRecipesSafeCall(queries: Map<String, String>) {
@@ -82,6 +96,19 @@ class RecipesViewModel @Inject constructor(
         }
     }
 
+    private suspend fun searchRecipeSafeCall(searchQuery: Map<String, String>) {
+        _searchRecipeResponse.value = NetworkResult.Loading()
+        if (hasInternetConnection()) {
+            try {
+                val response = repository.searchRecipe(searchQuery = searchQuery)
+                _searchRecipeResponse.value = handleFoodRecipesResponse(response = response)
+            } catch (e: Exception) {
+                _searchRecipeResponse.value = NetworkResult.Error("Recipe not found.")
+            }
+        } else {
+            _searchRecipeResponse.value = NetworkResult.Error("No Internet Connection.")
+        }
+    }
 
     private fun handleFoodRecipesResponse(response: Response<FoodRecipe>): NetworkResult<FoodRecipe>? {
         when {
@@ -146,6 +173,16 @@ class RecipesViewModel @Inject constructor(
         queries[Constants.QUERY_ADD_RECIPE_INFORMATION] = "true"
         queries[Constants.QUERY_FILL_INGREDIENTS] = "true"
 
+        return queries
+    }
+
+    fun applySearchQuery(searchQuery: String): HashMap<String, String> {
+        val queries: HashMap<String, String> = HashMap()
+        queries[QUERY_SEARCH] = searchQuery
+        queries[QUERY_NUMBER] = DEFAULT_RECIPES_NUMBER
+        queries[QUERY_API_KEY] = API_KEY
+        queries[QUERY_ADD_RECIPE_INFORMATION] = "true"
+        queries[QUERY_FILL_INGREDIENTS] = "true"
         return queries
     }
 
