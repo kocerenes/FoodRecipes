@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.enesk.foodrecipes">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:allowBackup="true"
         android:name=".di.FoodRecipesApplication"
+        android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -18,6 +18,11 @@
         android:theme="@style/Theme.FoodRecipes"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.DetailsActivity"
+            android:label="Details"
+            android:theme="@style/DetailsActivityStyles"
+            android:exported="false" />
+        <activity
             android:name=".presentation.MainActivity"
             android:exported="true">
             <intent-filter>
@@ -26,6 +31,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
