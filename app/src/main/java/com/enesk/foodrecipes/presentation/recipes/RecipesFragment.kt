@@ -3,9 +3,12 @@ package com.enesk.foodrecipes.presentation.recipes
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -38,6 +41,8 @@ class RecipesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentRecipesBinding.inflate(inflater, container, false)
+
+        setHasOptionsMenu(true)
 
         // for recipesBinding
         binding.lifecycleOwner = this
@@ -129,6 +134,36 @@ class RecipesFragment : Fragment() {
         }
     }
 
+    private fun searchApiData(searchQuery: String) {
+        recipesViewModel.searchRecipe(recipesViewModel.applySearchQuery(searchQuery = searchQuery))
+        recipesViewModel.searchRecipeResponse.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is NetworkResult.Success -> {
+                    binding.progressBarRecipe.visibility = View.GONE
+                    val foodRecipe = response.data
+                    foodRecipe?.let {
+                        recipesAdapter.setData(it)
+                    }
+                    binding.recipesRecyclerView.visibility = View.VISIBLE
+                    binding.fabRecipes.visibility = View.VISIBLE
+                }
+                is NetworkResult.Error -> {
+                    binding.progressBarRecipe.visibility = View.GONE
+                    loadDataFromCache()
+                    Toast.makeText(
+                        requireContext(),
+                        response.message.toString(),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                is NetworkResult.Loading -> {
+                    binding.recipesRecyclerView.visibility = View.GONE
+                    binding.fabRecipes.visibility = View.GONE
+                    binding.progressBarRecipe.visibility = View.VISIBLE
+                }
+            }
+        }
+    }
 
     private fun clickTheFabRecipes() {
         binding.fabRecipes.setOnClickListener {
@@ -138,6 +173,26 @@ class RecipesFragment : Fragment() {
                 recipesViewModel.showNetworkStatus()
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.recipes_menu, menu)
+
+        val search = menu.findItem(R.id.searchMenu)
+        val searchView = search.actionView as? SearchView
+        searchView?.isSubmitButtonEnabled = true
+        searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                if (query != null) {
+                    searchApiData(query)
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+                return true
+            }
+        })
     }
 
     override fun onDestroyView() {
