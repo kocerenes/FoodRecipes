@@ -1,4 +1,4 @@
-package com.enesk.foodrecipes.presentation.recipes.bottom_sheet
+package com.enesk.foodrecipes.presentation.main_screens.bottom_sheet
 
 import android.os.Bundle
 import android.util.Log
@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.findNavController
 import com.enesk.foodrecipes.databinding.RecipesBottomSheetBinding
-import com.enesk.foodrecipes.presentation.recipes.RecipesViewModel
+import com.enesk.foodrecipes.presentation.main_screens.recipes.RecipesViewModel
 import com.enesk.foodrecipes.util.Constants.DEFAULT_DIET_TYPE
 import com.enesk.foodrecipes.util.Constants.DEFAULT_MEAL_TYPE
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment

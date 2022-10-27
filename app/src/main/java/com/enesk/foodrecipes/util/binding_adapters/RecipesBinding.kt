@@ -1,4 +1,4 @@
-package com.enesk.foodrecipes.presentation.binding_adapters
+package com.enesk.foodrecipes.util.binding_adapters
 
 import android.view.View
 import android.widget.ImageView

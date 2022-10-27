@@ -1,4 +1,4 @@
-package com.enesk.foodrecipes.presentation
+package com.enesk.foodrecipes.presentation.main_screens
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

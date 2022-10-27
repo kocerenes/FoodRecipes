@@ -1,4 +1,4 @@
-package com.enesk.foodrecipes.presentation.recipes
+package com.enesk.foodrecipes.presentation.main_screens.recipes
 
 import android.content.Context
 import android.net.ConnectivityManager

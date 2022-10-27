@@ -6,14 +6,14 @@
     <data>
         <variable
             name="recipesViewModel"
-            type="com.enesk.foodrecipes.presentation.recipes.RecipesViewModel" />
+            type="com.enesk.foodrecipes.presentation.main_screens.recipes.RecipesViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/lightGray"
-        tools:context=".presentation.recipes.RecipesFragment">
+        tools:context=".presentation.main_screens.recipes.RecipesFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recipes_recycler_view"

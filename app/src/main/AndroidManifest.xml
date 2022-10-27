@@ -18,12 +18,12 @@
         android:theme="@style/Theme.FoodRecipes"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.DetailsActivity"
+            android:name=".presentation.details_screens.DetailsActivity"
             android:label="Details"
             android:theme="@style/DetailsActivityStyles"
             android:exported="false" />
         <activity
-            android:name=".presentation.MainActivity"
+            android:name=".presentation.main_screens.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

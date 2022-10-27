@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/recipesFragment"
-        android:name="com.enesk.foodrecipes.presentation.recipes.RecipesFragment"
+        android:name="com.enesk.foodrecipes.presentation.main_screens.recipes.RecipesFragment"
         android:label="Recipes"
         tools:layout="@layout/fragment_recipes" >
         <action
@@ -33,7 +33,7 @@
         tools:layout="@layout/fragment_food_joke" />
     <dialog
         android:id="@+id/recipesBottomSheet"
-        android:name="com.enesk.foodrecipes.presentation.recipes.bottom_sheet.RecipesBottomSheet"
+        android:name="com.enesk.foodrecipes.presentation.main_screens.bottom_sheet.RecipesBottomSheet"
         android:label="recipes_bottom_sheet"
         tools:layout="@layout/recipes_bottom_sheet" >
         <action
@@ -42,7 +42,7 @@
     </dialog>
     <activity
         android:id="@+id/detailsActivity"
-        android:name="com.enesk.foodrecipes.presentation.DetailsActivity"
+        android:name="com.enesk.foodrecipes.presentation.details_screens.DetailsActivity"
         android:label="Details"
         tools:layout="@layout/activity_details" >
         <argument

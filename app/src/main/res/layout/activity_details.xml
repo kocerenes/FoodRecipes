@@ -5,7 +5,7 @@
     android:id="@+id/detailsLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.DetailsActivity">
+    tools:context=".presentation.details_screens.DetailsActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/detailsAppBar"

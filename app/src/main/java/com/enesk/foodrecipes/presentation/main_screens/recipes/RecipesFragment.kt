@@ -1,4 +1,4 @@
-package com.enesk.foodrecipes.presentation.recipes
+package com.enesk.foodrecipes.presentation.main_screens.recipes
 
 import android.os.Bundle
 import android.util.Log

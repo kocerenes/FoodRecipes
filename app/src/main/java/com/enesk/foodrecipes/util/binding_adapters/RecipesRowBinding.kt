@@ -1,4 +1,4 @@
-package com.enesk.foodrecipes.presentation.binding_adapters
+package com.enesk.foodrecipes.util.binding_adapters
 
 import android.util.Log
 import android.view.View
@@ -11,7 +11,7 @@ import androidx.navigation.findNavController
 import coil.load
 import com.enesk.foodrecipes.R
 import com.enesk.foodrecipes.data.source.network.model.Result
-import com.enesk.foodrecipes.presentation.recipes.RecipesFragmentDirections
+import com.enesk.foodrecipes.presentation.main_screens.recipes.RecipesFragmentDirections
 
 class RecipesRowBinding {
 
