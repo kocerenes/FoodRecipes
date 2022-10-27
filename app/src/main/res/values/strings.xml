@@ -39,4 +39,10 @@
 
     <!-- Search bar Strings -->
     <string name="search_title">Search</string>
+
+    <!-- Overview Fragment Strings -->
+    <string name="dairy_free">Dairy free</string>
+    <string name="healthy">Healthy</string>
+    <string name="cheap">Cheap</string>
+    <string name="description">Description</string>
 </resources>
