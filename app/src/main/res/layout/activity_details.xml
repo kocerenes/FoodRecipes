@@ -21,6 +21,7 @@
             android:layout_height="wrap_content"/>
 
         <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
             style="@style/CustomTabLayoutStyle"
             app:tabTextAppearance="@style/CustomTabTextStyle"
             android:layout_width="match_parent"
