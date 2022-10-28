@@ -1,17 +1,18 @@
 package com.enesk.foodrecipes.presentation.details_screens.overview
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import coil.load
 import com.enesk.foodrecipes.R
 import com.enesk.foodrecipes.data.source.network.model.Result
 import com.enesk.foodrecipes.databinding.FragmentOverviewBinding
+import org.jsoup.Jsoup
 
 class OverviewFragment : Fragment() {
 
@@ -40,14 +41,21 @@ class OverviewFragment : Fragment() {
                 titleTextView.text = result.title
                 likesTextView.text = result.aggregateLikes.toString()
                 timeTextView.text = result.readyInMinutes.toString()
-                summaryTextView.text = result.summary
+                result?.summary.let {
+                    val summary = Jsoup.parse(it).text()
+                    summaryTextView.text = summary
+                }
 
-                result.vegetarian?.let { setColorOfIcon(it,vegetarianImageView,vegetarianTextView) }
-                result.vegan?.let { setColorOfIcon(it,veganImageView,veganTextView) }
-                result.glutenFree?.let { setColorOfIcon(it,glutenFreeImageView,glutenFreeTextView) }
-                result.dairyFree?.let { setColorOfIcon(it,dairyFreeImageView,dairyFreeTextView) }
-                result.veryHealthy?.let { setColorOfIcon(it,healthyImageView,healthyTextView) }
-                result.cheap?.let { setColorOfIcon(it,cheapImageView,cheapTextView) }
+                result.vegetarian?.let {
+                    setColorOfIcon(it, vegetarianImageView, vegetarianTextView)
+                }
+                result.vegan?.let { setColorOfIcon(it, veganImageView, veganTextView) }
+                result.glutenFree?.let {
+                    setColorOfIcon(it, glutenFreeImageView, glutenFreeTextView)
+                }
+                result.dairyFree?.let { setColorOfIcon(it, dairyFreeImageView, dairyFreeTextView) }
+                result.veryHealthy?.let { setColorOfIcon(it, healthyImageView, healthyTextView) }
+                result.cheap?.let { setColorOfIcon(it, cheapImageView, cheapTextView) }
             }
         }
     }
