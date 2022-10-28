@@ -111,7 +111,7 @@
         app:layout_constraintTop_toTopOf="@+id/vegetarianImageView" />
 
     <ImageView
-        android:id="@+id/VeganImageView"
+        android:id="@+id/veganImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -127,9 +127,9 @@
         android:layout_marginStart="8dp"
         android:text="@string/vegan"
         android:textColor="@color/darkGray"
-        app:layout_constraintBottom_toBottomOf="@+id/VeganImageView"
-        app:layout_constraintStart_toEndOf="@+id/VeganImageView"
-        app:layout_constraintTop_toTopOf="@+id/VeganImageView" />
+        app:layout_constraintBottom_toBottomOf="@+id/veganImageView"
+        app:layout_constraintStart_toEndOf="@+id/veganImageView"
+        app:layout_constraintTop_toTopOf="@+id/veganImageView" />
 
     <ImageView
         android:id="@+id/glutenFreeImageView"
@@ -143,7 +143,7 @@
         app:tint="@color/darkGray" />
 
     <TextView
-        android:id="@+id/GlutenFreeTextView"
+        android:id="@+id/glutenFreeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -180,9 +180,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:src="@drawable/ic_checkmark"
-        app:layout_constraintBottom_toBottomOf="@+id/GlutenFreeTextView"
-        app:layout_constraintStart_toEndOf="@+id/GlutenFreeTextView"
-        app:layout_constraintTop_toTopOf="@+id/GlutenFreeTextView"
+        app:layout_constraintBottom_toBottomOf="@+id/glutenFreeTextView"
+        app:layout_constraintStart_toEndOf="@+id/glutenFreeTextView"
+        app:layout_constraintTop_toTopOf="@+id/glutenFreeTextView"
         app:tint="@color/darkGray" />
 
     <TextView
@@ -227,7 +227,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/VeganImageView"
+        app:layout_constraintTop_toBottomOf="@+id/veganImageView"
         app:layout_constraintVertical_bias="0.503">
 
         <LinearLayout
