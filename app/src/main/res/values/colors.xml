@@ -26,4 +26,9 @@
 
     <!-- details activity style -->
     <color name="actionBarBackgroundColor">@color/purple_500</color>
+
+    <!-- ingredients fragment style -->
+    <color name="strokeColor">@color/lightMediumGray</color>
+    <color name="cardBackgroundColor">@color/white</color>
+    <color name="titleColor">@color/darker</color>
 </resources>
