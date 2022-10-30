@@ -12,6 +12,7 @@ import com.enesk.foodrecipes.databinding.ActivityDetailsBinding
 import com.enesk.foodrecipes.presentation.details_screens.ingredients.IngredientsFragment
 import com.enesk.foodrecipes.presentation.details_screens.instructions.InstructionsFragment
 import com.enesk.foodrecipes.presentation.details_screens.overview.OverviewFragment
+import com.enesk.foodrecipes.util.Constants.RECIPE_RESULT_KEY
 
 class DetailsActivity : AppCompatActivity() {
 
@@ -39,7 +40,7 @@ class DetailsActivity : AppCompatActivity() {
         titles.add("Instructions")
 
         val resultBundle = Bundle()
-        resultBundle.putParcelable("recipeBundle", args.result)
+        resultBundle.putParcelable(RECIPE_RESULT_KEY, args.result)
 
         val pagerAdapter = PagerAdapter(
             resultBundle = resultBundle,

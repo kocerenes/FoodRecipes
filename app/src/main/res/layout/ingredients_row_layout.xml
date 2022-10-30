@@ -35,7 +35,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/OngredientImageView"
+                android:id="@+id/ingredientImageView"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 app:layout_constraintBottom_toBottomOf="@+id/whiteBackground"

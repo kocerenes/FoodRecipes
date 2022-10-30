@@ -12,6 +12,7 @@ import coil.load
 import com.enesk.foodrecipes.R
 import com.enesk.foodrecipes.data.source.network.model.Result
 import com.enesk.foodrecipes.databinding.FragmentOverviewBinding
+import com.enesk.foodrecipes.util.Constants.RECIPE_RESULT_KEY
 import org.jsoup.Jsoup
 
 class OverviewFragment : Fragment() {
@@ -27,7 +28,7 @@ class OverviewFragment : Fragment() {
         _binding = FragmentOverviewBinding.inflate(inflater, container, false)
 
         val args = arguments
-        val myBundle: Result? = args?.getParcelable("recipeBundle")
+        val myBundle: Result? = args?.getParcelable(RECIPE_RESULT_KEY)
 
         displayDataOnScreen(myBundle = myBundle)
 
