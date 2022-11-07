@@ -48,4 +48,7 @@
 
     <!-- Details Screen Strings -->
     <string name="save_to_favorites">Save to Favorites</string>
+
+    <!-- Favorites Fragment Strings -->
+    <string name="no_favorite_recipes">No Favorite Recipes</string>
 </resources>
