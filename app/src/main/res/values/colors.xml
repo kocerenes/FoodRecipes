@@ -31,4 +31,10 @@
     <color name="strokeColor">@color/lightMediumGray</color>
     <color name="cardBackgroundColor">@color/white</color>
     <color name="titleColor">@color/darker</color>
+
+    <!-- Favorites fragment style -->
+    <color name="statusBarColor">@color/purple_700</color>
+    <color name="contextualStatusBarColor">@color/darker</color>
+    <color name="contextualActionBarColor">@color/dark</color>
+    <color name="cardBackgroundLightColor">#106200EA</color>
 </resources>

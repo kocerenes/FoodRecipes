@@ -51,4 +51,5 @@
 
     <!-- Favorites Fragment Strings -->
     <string name="no_favorite_recipes">No Favorite Recipes</string>
+    <string name="delete_favorite_menu">Delete Favorite Menu</string>
 </resources>
