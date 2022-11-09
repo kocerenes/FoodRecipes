@@ -15,8 +15,14 @@ class FavoriteRecipesViewModel @Inject constructor(
     private val repository: FavoriteRecipesRepository
 ) : ViewModel() {
 
+    var favoriteRecipeSize = 0
+
     val readFavoriteRecipes: LiveData<List<FavoritesEntity>> =
         repository.readFavoriteRecipes().asLiveData()
+
+    fun getFavoriteRecipeSize() {
+        favoriteRecipeSize = readFavoriteRecipes.value?.size!!
+    }
 
     fun insertFavoriteRecipe(favoritesEntity: FavoritesEntity) = viewModelScope.launch {
         repository.insertFavoriteRecipe(favoritesEntity)
