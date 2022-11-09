@@ -168,6 +168,12 @@ class FavoriteRecipesAdapter(
         ).setAction("Okay") {}.show()
     }
 
+    fun clearContextualActionMode() {
+        if (this::mActionMode.isInitialized) {
+            mActionMode.finish()
+        }
+    }
+
     fun setData(newFavoriteRecipes: List<FavoritesEntity>) {
         val favoriteRecipesDiffUtil = RecipesDiffUtil(favoriteRecipes, newFavoriteRecipes)
         val diffUtilResult = DiffUtil.calculateDiff(favoriteRecipesDiffUtil)
