@@ -1,8 +1,10 @@
 package com.enesk.foodrecipes.di
 
 import com.enesk.foodrecipes.data.repository.FavoriteRecipesRepositoryImpl
+import com.enesk.foodrecipes.data.repository.FoodJokeRepositoryImpl
 import com.enesk.foodrecipes.data.repository.RecipesRepositoryImpl
 import com.enesk.foodrecipes.domain.repository.FavoriteRecipesRepository
+import com.enesk.foodrecipes.domain.repository.FoodJokeRepository
 import com.enesk.foodrecipes.domain.repository.RecipesRepository
 import dagger.Binds
 import dagger.Module
@@ -24,4 +26,10 @@ abstract class RepositoryModule {
     abstract fun provideFavoriteRecipesRepository(
         favoriteRecipesRepositoryImpl: FavoriteRecipesRepositoryImpl
     ): FavoriteRecipesRepository
+
+    @Binds
+    @Singleton
+    abstract fun provideFoodJokeRepository(
+        foodJokeRepositoryImpl: FoodJokeRepositoryImpl
+    ): FoodJokeRepository
 }
