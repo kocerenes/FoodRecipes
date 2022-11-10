@@ -53,4 +53,7 @@
     <string name="no_favorite_recipes">No Favorite Recipes</string>
     <string name="delete_favorite_menu">Delete Favorite Menu</string>
     <string name="delete_all">Delete All</string>
+
+    <!-- Food Joke Fragment Strings -->
+    <string name="error">Error</string>
 </resources>
