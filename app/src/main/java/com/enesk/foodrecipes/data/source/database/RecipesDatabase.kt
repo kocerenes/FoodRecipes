@@ -10,7 +10,7 @@ import com.enesk.foodrecipes.data.util.RecipesTypeConverter
 
 @Database(
     entities = [RecipesEntity::class, FavoritesEntity::class, FoodJokeEntity::class],
-    version = 2,
+    version = 1,
     exportSchema = false
 )
 @TypeConverters(RecipesTypeConverter::class)

@@ -1,4 +1,4 @@
-package com.enesk.foodrecipes.presentation.food_joke
+package com.enesk.foodrecipes.presentation.main_screens.food_joke
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

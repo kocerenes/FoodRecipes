@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ic_food_joke_background"
-    tools:context=".presentation.food_joke.FoodJokeFragment">
+    tools:context=".presentation.main_screens.food_joke.FoodJokeFragment">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/foodJokeCardView"
