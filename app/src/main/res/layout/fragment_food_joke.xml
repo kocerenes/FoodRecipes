@@ -73,6 +73,8 @@
 
         <ImageView
             android:id="@+id/foodJokeErrorImageView"
+            readApiResponseForFoodJoke2="@{foodJokeViewModel.foodJokeResponse}"
+            readDatabaseForFoodJoke2="@{foodJokeViewModel.readFoodJoke}"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:alpha="0.5"
@@ -87,6 +89,8 @@
 
         <TextView
             android:id="@+id/foodJokeErrorTextView"
+            readApiResponseForFoodJoke2="@{foodJokeViewModel.foodJokeResponse}"
+            readDatabaseForFoodJoke2="@{foodJokeViewModel.readFoodJoke}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"

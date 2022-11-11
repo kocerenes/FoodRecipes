@@ -2,6 +2,7 @@ package com.enesk.foodrecipes.util.binding_adapters
 
 import android.view.View
 import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.enesk.foodrecipes.data.source.database.entity.FoodJokeEntity
 import com.enesk.foodrecipes.data.source.network.model.food_joke.FoodJoke
@@ -54,6 +55,25 @@ class FoodJokeBinding {
                     }
                 }
                 else -> {}
+            }
+        }
+
+        @BindingAdapter("readApiResponseForFoodJoke2", "readDatabaseForFoodJoke2", requireAll = true)
+        @JvmStatic
+        fun setErrorViewsVisibility(
+            view: View,
+            apiResponse: NetworkResult<FoodJoke>?,
+            database: List<FoodJokeEntity>?
+        ) {
+            if (database != null && database.isEmpty()) {
+                    view.visibility = View.VISIBLE
+                    if (view is TextView && apiResponse != null) {
+                        view.text = apiResponse.message.toString()
+                    }
+            }
+
+            if (apiResponse is NetworkResult.Success) {
+                view.visibility = View.INVISIBLE
             }
         }
     }
