@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="foodJokeViewModel"
             type="com.enesk.foodrecipes.presentation.main_screens.food_joke.FoodJokeViewModel" />
@@ -17,6 +18,8 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/foodJokeCardView"
+            readApiResponseForFoodJoke="@{foodJokeViewModel.foodJokeResponse}"
+            readDatabaseForFoodJoke="@{foodJokeViewModel.readFoodJoke}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -59,6 +62,7 @@
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyle"
+            readApiResponseForFoodJoke="@{foodJokeViewModel.foodJokeResponse}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
