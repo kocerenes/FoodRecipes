@@ -16,7 +16,7 @@ class RemoteDataSourceImpl @Inject constructor(
     override suspend fun searchRecipe(searchQuery: Map<String, String>): Response<FoodRecipe> =
         foodRecipesApi.searchRecipes(searchQuery = searchQuery)
 
-    override suspend fun getFoodJoke(apiKey: String): Response<FoodJoke> {
-        return foodRecipesApi.getFoodJoke(apiKey = apiKey)
+    override suspend fun getFoodJoke(): Response<FoodJoke> {
+        return foodRecipesApi.getFoodJoke()
     }
 }

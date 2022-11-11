@@ -2,6 +2,7 @@ package com.enesk.foodrecipes.data.source.network
 
 import com.enesk.foodrecipes.data.source.network.model.FoodRecipe
 import com.enesk.foodrecipes.data.source.network.model.food_joke.FoodJoke
+import com.enesk.foodrecipes.util.Constants.API_KEY
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -31,6 +32,6 @@ interface FoodRecipesApi {
 
     @GET("food/jokes/random")
     suspend fun getFoodJoke(
-        @Query("apiKey") apiKey: String
+        @Query("apiKey") apiKey: String = API_KEY
     ): Response<FoodJoke>
 }

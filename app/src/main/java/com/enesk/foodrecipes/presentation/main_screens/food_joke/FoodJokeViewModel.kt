@@ -27,19 +27,19 @@ class FoodJokeViewModel @Inject constructor(
     var foodJokeResponse: MutableLiveData<NetworkResult<FoodJoke>> = MutableLiveData()
     val readFoodJoke: LiveData<List<FoodJokeEntity>> = repository.readFoodJoke().asLiveData()
 
-    fun getFoodJoke(apiKey: String) = viewModelScope.launch {
-        getFoodJokeSafeCall(apiKey)
+    fun getFoodJoke() = viewModelScope.launch {
+        getFoodJokeSafeCall()
     }
 
     fun insertFoodJoke(foodJokeEntity: FoodJokeEntity) = viewModelScope.launch {
         repository.insertFoodJoke(foodJokeEntity)
     }
 
-    private suspend fun getFoodJokeSafeCall(apiKey: String) {
+    private suspend fun getFoodJokeSafeCall() {
         foodJokeResponse.value = NetworkResult.Loading()
         if (hasInternetConnection()) {
             try {
-                val response = repository.getFoodJoke(apiKey)
+                val response = repository.getFoodJoke()
                 foodJokeResponse.value = handleFoodJokeResponse(response)
 
                 val foodJoke = foodJokeResponse.value?.data

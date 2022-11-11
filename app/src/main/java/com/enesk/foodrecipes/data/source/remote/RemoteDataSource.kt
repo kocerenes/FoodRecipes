@@ -8,5 +8,5 @@ interface RemoteDataSource {
 
     suspend fun getRecipes(queries: Map<String, String>): Response<FoodRecipe>
     suspend fun searchRecipe(searchQuery: Map<String, String>): Response<FoodRecipe>
-    suspend fun getFoodJoke(apiKey: String): Response<FoodJoke>
+    suspend fun getFoodJoke(): Response<FoodJoke>
 }

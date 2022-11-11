@@ -7,7 +7,7 @@ import retrofit2.Response
 
 interface FoodJokeRepository {
 
-    suspend fun getFoodJoke(apiKey: String): Response<FoodJoke>
+    suspend fun getFoodJoke(): Response<FoodJoke>
     fun readFoodJoke(): Flow<List<FoodJokeEntity>>
     suspend fun insertFoodJoke(foodJokeEntity: FoodJokeEntity)
 }

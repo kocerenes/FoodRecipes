@@ -14,8 +14,8 @@ class FoodJokeRepositoryImpl @Inject constructor(
     private val localDataSource: LocalDataSource
 ) : FoodJokeRepository {
 
-    override suspend fun getFoodJoke(apiKey: String): Response<FoodJoke> {
-        return remoteDataSource.getFoodJoke(apiKey = apiKey)
+    override suspend fun getFoodJoke(): Response<FoodJoke> {
+        return remoteDataSource.getFoodJoke()
     }
 
     override fun readFoodJoke(): Flow<List<FoodJokeEntity>> =
