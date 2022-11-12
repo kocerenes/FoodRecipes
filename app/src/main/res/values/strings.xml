@@ -56,4 +56,5 @@
 
     <!-- Food Joke Fragment Strings -->
     <string name="error">Error</string>
+    <string name="share">Share</string>
 </resources>
