@@ -14,5 +14,6 @@
         <!-- Customize your theme here. -->
         <item name="actionBarStyle">@style/CustomActionBarStyle</item>
         <item name="bottomNavigationStyle">@style/CustomBottomNavigationViewStyle</item>
+        <item name="actionModeBackground">@color/contextualActionBarColor</item>
     </style>
 </resources>
