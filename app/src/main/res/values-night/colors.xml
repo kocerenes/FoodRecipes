@@ -18,8 +18,8 @@
     <color name="yellow">#FFC114</color>
     <color name="green">#00C980</color>
 
-    <!-- LIGHT THEME -->
-    <color name="backgroundColor">@color/lightGray</color>
+    <!-- DARK THEME -->
+    <color name="backgroundColor">@color/dark</color>
 
     <!-- Custom chip style -->
     <color name="checkedChipBackgroundColor">#206200EA</color>
@@ -28,22 +28,22 @@
     <color name="chipTextColor">@color/darkGray</color>
 
     <!-- details activity style -->
-    <color name="actionBarBackgroundColor">@color/purple_500</color>
+    <color name="actionBarBackgroundColor">@color/darker</color>
 
     <!-- Custom CardView style -->
-    <color name="strokeColor">@color/lightMediumGray</color>
-    <color name="cardBackgroundColor">@color/white</color>
+    <color name="strokeColor">@color/mediumGray</color>
+    <color name="cardBackgroundColor">@color/darker</color>
     <color name="cardBackgroundLightColor">#106200EA</color>
-    <color name="titleColor">@color/darker</color>
-    <color name="descriptionColor">@color/darkGray</color>
+    <color name="titleColor">@color/mediumGray</color>
+    <color name="descriptionColor">@color/mediumGray</color>
 
     <!-- Favorites fragment style -->
-    <color name="statusBarColor">@color/purple_700</color>
+    <color name="statusBarColor">@color/black</color>
     <color name="contextualStatusBarColor">@color/darker</color>
     <color name="contextualActionBarColor">@color/dark</color>
 
     <!-- Custom Bottom Navigation View Style -->
-    <color name="bottomNavBackground">@color/white</color>
-    <color name="bottomNavItemColor">@color/darkGray</color>
-    <color name="bottomNavCheckedItemColor">@color/purple_500</color>
+    <color name="bottomNavBackground">@color/darker</color>
+    <color name="bottomNavItemColor">@color/mediumGray</color>
+    <color name="bottomNavCheckedItemColor">@color/purple_200</color>
 </resources>

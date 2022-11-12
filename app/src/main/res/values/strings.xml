@@ -9,6 +9,7 @@
     <!-- Recipes Fragment Strings -->
     <string name="error_textview_text">No Internet Connection.</string>
     <string name="fab_button_description">Fab Button</string>
+    <string name="vegan_recipe">vegan</string>
 
     <!-- Bottom Sheet Strings -->
     <string name="main_course">Main Course</string>

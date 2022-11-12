@@ -69,6 +69,20 @@ class RecipesRowBinding {
                     }
                 }
             }
+            else{
+                when (view) {
+                    is TextView -> {
+                        view.setTextColor(
+                            ContextCompat.getColor(view.context, R.color.mediumGray)
+                        )
+                    }
+                    is ImageView -> {
+                        view.setColorFilter(
+                            ContextCompat.getColor(view.context, R.color.mediumGray)
+                        )
+                    }
+                }
+            }
         }
 
         @BindingAdapter("parseHtml")
