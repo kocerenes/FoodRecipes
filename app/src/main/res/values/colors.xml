@@ -21,6 +21,7 @@
 
     <!-- LIGHT THEME -->
     <color name="backgroundColor">@color/lightGray</color>
+    <color name="itemColor">@color/darker</color>
 
     <!-- Custom chip style -->
     <color name="checkedChipBackgroundColor">#206200EA</color>

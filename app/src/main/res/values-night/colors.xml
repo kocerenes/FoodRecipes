@@ -21,6 +21,7 @@
 
     <!-- DARK THEME -->
     <color name="backgroundColor">@color/dark</color>
+    <color name="itemColor">@color/mediumGray</color>
 
     <!-- Custom chip style -->
     <color name="checkedChipBackgroundColor">@color/dark</color>
