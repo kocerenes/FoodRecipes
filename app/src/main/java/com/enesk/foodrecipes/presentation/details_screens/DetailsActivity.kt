@@ -19,6 +19,7 @@ import com.enesk.foodrecipes.presentation.details_screens.overview.OverviewFragm
 import com.enesk.foodrecipes.presentation.favorite_recipes.FavoriteRecipesViewModel
 import com.enesk.foodrecipes.util.Constants.RECIPE_RESULT_KEY
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -57,14 +58,16 @@ class DetailsActivity : AppCompatActivity() {
         val pagerAdapter = PagerAdapter(
             resultBundle = resultBundle,
             fragments = fragments,
-            title = titles,
-            fragmentManager = supportFragmentManager
+            this
         )
 
-        with(binding) {
-            viewPager.adapter = pagerAdapter
-            tabLayout.setupWithViewPager(viewPager)
+        binding.viewPager2.apply {
+            adapter = pagerAdapter
         }
+
+        TabLayoutMediator(binding.tabLayout, binding.viewPager2) { tab, position ->
+            tab.text = titles[position]
+        }.attach()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
