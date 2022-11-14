@@ -1,8 +1,8 @@
 package com.enesk.foodrecipes.util.binding_adapters
 
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.enesk.foodrecipes.data.source.database.entity.FavoritesEntity
@@ -12,40 +12,22 @@ class FavoriteRecipesBinding {
 
     companion object {
 
-        @BindingAdapter("viewVisibility", "setData", requireAll = false)
+        @BindingAdapter("setVisibility", "setData", requireAll = false)
         @JvmStatic
-        fun setDataAndViewVisibility(
+        fun setVisibility(
             view: View,
-            favoriteEntities: List<FavoritesEntity>?,
+            favoritesEntity: List<FavoritesEntity>?,
             favoritesAdapter: FavoriteRecipesAdapter?
         ) {
-            if (favoriteEntities.isNullOrEmpty()) {
-                when (view) {
-                    is ImageView -> {
-                        view.visibility = View.VISIBLE
-                    }
-                    is TextView -> {
-                        view.visibility = View.VISIBLE
-                    }
-                    is RecyclerView -> {
-                        view.visibility = View.INVISIBLE
+            when (view) {
+                is RecyclerView -> {
+                    val dataCheck = favoritesEntity.isNullOrEmpty()
+                    view.isInvisible = dataCheck
+                    if (!dataCheck) {
+                        favoritesEntity?.let { favoritesAdapter?.setData(it) }
                     }
                 }
-            } else {
-                when (view) {
-                    is ImageView -> {
-                        view.visibility = View.INVISIBLE
-                    }
-                    is TextView -> {
-                        view.visibility = View.INVISIBLE
-                    }
-                    is RecyclerView -> {
-                        view.visibility = View.VISIBLE
-                        if (favoriteEntities != null) {
-                            favoritesAdapter?.setData(favoriteEntities)
-                        }
-                    }
-                }
+                else -> view.isVisible = favoritesEntity.isNullOrEmpty()
             }
         }
     }
