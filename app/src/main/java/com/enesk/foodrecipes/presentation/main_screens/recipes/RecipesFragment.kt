@@ -51,7 +51,7 @@ class RecipesFragment : Fragment() {
         setupRecyclerView()
         observeBackOnline()
 
-        lifecycleScope.launch {
+        lifecycleScope.launchWhenStarted {
             networkListener = NetworkListener()
             networkListener.checkNetworkAvailability(requireContext())
                 .collect { status ->
