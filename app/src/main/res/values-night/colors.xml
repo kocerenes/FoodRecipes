@@ -16,12 +16,14 @@
     <color name="mediumDark">#21272C</color>
     <color name="darker">#151B20</color>
     <color name="red">#FF4646</color>
+    <color name="darkRed">#871515</color>
     <color name="yellow">#FFC114</color>
     <color name="green">#00C980</color>
 
     <!-- DARK THEME -->
     <color name="backgroundColor">@color/dark</color>
     <color name="itemColor">@color/mediumGray</color>
+    <color name="fabColor">@color/darkRed</color>
 
     <!-- Custom chip style -->
     <color name="checkedChipBackgroundColor">@color/dark</color>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="recipesViewModel"
             type="com.enesk.foodrecipes.presentation.main_screens.recipes.RecipesViewModel" />
@@ -30,24 +31,26 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabRecipes"
-            android:contentDescription="@string/fab_button_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="24dp"
+            android:backgroundTint="@color/fabColor"
             android:clickable="true"
+            android:contentDescription="@string/fab_button_description"
             android:focusable="true"
             android:src="@drawable/ic_restaurant_24"
+            app:borderWidth="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/recipes_recycler_view"
             app:tint="@color/white" />
 
         <ImageView
             android:id="@+id/error_imageView"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
             readApiResponse="@{recipesViewModel.recipesResponse}"
             readDatabase="@{recipesViewModel.readRecipes}"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:alpha="0.5"
             android:src="@drawable/ic_sad_face_24"
             android:visibility="invisible"
@@ -59,10 +62,10 @@
 
         <TextView
             android:id="@+id/error_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             readApiResponse="@{recipesViewModel.recipesResponse}"
             readDatabase="@{recipesViewModel.readRecipes}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:alpha="0.5"
             android:text="@string/error_textview_text"
@@ -78,8 +81,8 @@
             style="?android:attr/progressBarStyle"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:visibility="gone"
             android:indeterminateTint="@color/black"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/recipes_recycler_view"
             app:layout_constraintEnd_toEndOf="@+id/recipes_recycler_view"
             app:layout_constraintStart_toStartOf="@+id/recipes_recycler_view"
