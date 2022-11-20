@@ -7,18 +7,18 @@
 
         <variable
             name="favoriteViewModel"
-            type="com.enesk.foodrecipes.presentation.favorite_recipes.FavoriteRecipesViewModel" />
+            type="com.enesk.foodrecipes.presentation.main_screens.favorite_recipes.FavoriteRecipesViewModel" />
 
         <variable
             name="favoriteAdapter"
-            type="com.enesk.foodrecipes.presentation.favorite_recipes.FavoriteRecipesAdapter" />
+            type="com.enesk.foodrecipes.presentation.main_screens.favorite_recipes.FavoriteRecipesAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/backgroundColor"
-        tools:context=".presentation.favorite_recipes.FavoriteRecipesFragment">
+        tools:context=".presentation.main_screens.favorite_recipes.FavoriteRecipesFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/favoriteRecipeRecyclerView"

@@ -1,4 +1,4 @@
-package com.enesk.foodrecipes.presentation.favorite_recipes
+package com.enesk.foodrecipes.presentation.main_screens.favorite_recipes
 
 import android.view.ActionMode
 import android.view.LayoutInflater

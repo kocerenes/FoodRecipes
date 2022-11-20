@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/favoriteRecipesFragment"
-        android:name="com.enesk.foodrecipes.presentation.favorite_recipes.FavoriteRecipesFragment"
+        android:name="com.enesk.foodrecipes.presentation.main_screens.favorite_recipes.FavoriteRecipesFragment"
         android:label="Favorites"
         tools:layout="@layout/fragment_favorite_recipes" >
         <action

@@ -6,7 +6,7 @@ import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.enesk.foodrecipes.data.source.database.entity.FavoritesEntity
-import com.enesk.foodrecipes.presentation.favorite_recipes.FavoriteRecipesAdapter
+import com.enesk.foodrecipes.presentation.main_screens.favorite_recipes.FavoriteRecipesAdapter
 
 class FavoriteRecipesBinding {
 

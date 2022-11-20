@@ -16,7 +16,7 @@ import com.enesk.foodrecipes.databinding.ActivityDetailsBinding
 import com.enesk.foodrecipes.presentation.details_screens.ingredients.IngredientsFragment
 import com.enesk.foodrecipes.presentation.details_screens.instructions.InstructionsFragment
 import com.enesk.foodrecipes.presentation.details_screens.overview.OverviewFragment
-import com.enesk.foodrecipes.presentation.favorite_recipes.FavoriteRecipesViewModel
+import com.enesk.foodrecipes.presentation.main_screens.favorite_recipes.FavoriteRecipesViewModel
 import com.enesk.foodrecipes.util.Constants.RECIPE_RESULT_KEY
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
