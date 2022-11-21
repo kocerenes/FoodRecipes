@@ -10,6 +10,7 @@ import com.enesk.foodrecipes.data.source.network.model.ExtendedIngredient
 import com.enesk.foodrecipes.databinding.IngredientsRowLayoutBinding
 import com.enesk.foodrecipes.util.Constants.BASE_IMAGE_URL
 import com.enesk.foodrecipes.util.RecipesDiffUtil
+import java.util.*
 
 class IngredientsAdapter : RecyclerView.Adapter<IngredientsAdapter.MyViewHolder>() {
 
@@ -31,7 +32,16 @@ class IngredientsAdapter : RecyclerView.Adapter<IngredientsAdapter.MyViewHolder>
                     crossfade(600)
                     error(R.drawable.ic_error_placeholder)
                 }
-                name?.let { binding.ingredientNameTextView.text = it.capitalize() }
+                name?.let {
+                    binding.ingredientNameTextView.text =
+                        it.replaceFirstChar {
+                            if (it.isLowerCase()) {
+                                it.titlecase(Locale.ROOT)
+                            } else {
+                                it.toString()
+                            }
+                        }
+                }
                 binding.ingredientAmountTextView.text = amount.toString()
                 binding.ingredientUnitTextView.text = unit
                 binding.ingredientConsistencyTextView.text = consistency
